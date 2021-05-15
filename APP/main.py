@@ -1,5 +1,6 @@
+from lib2to3.pgen2 import token
 from typing import Optional, List
-from fastapi import FastAPI, File, UploadFile
+from fastapi import FastAPI, File, Form, UploadFile
 from pydantic import BaseModel
 import os
 
@@ -7,7 +8,7 @@ app = FastAPI()
 
 class bugreport_tools(BaseModel):
     User_email : str
-    # Problem_link : File
+    Problem Code : str
     Explanation : str
 
 class ask_tools(BaseModel):
@@ -53,9 +54,14 @@ def ask(ask_tools:ask_tools):
     return {"email" : ask_tools.User_email, "question":ask_tools.question}
 
 # =========================================질문 API 코드 END========================================
+
+# =========================================신고 API 코드 END========================================
+
 @app.post("/report")
 def report(report_tools:report_tools):
     return {"email" : report_tools.User_email, "Report_contents" : report_tools.Report_contents, "Explanation" : report_tools.Explanation}
+
+# =========================================신고 API 코드 END========================================
 
 # =========================================파트너쉽 API 코드 START===================================
 

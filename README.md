@@ -7,14 +7,14 @@
 
 1. 버그 제보 형식
     - 이메일
-    - 문제가 발생한 부분의 링크와 스크린샷 (파일 받거나 아니면 링크 받기)
+    - 문제의 에러코드나 문제 에러문자 안내
     - 문제 설명
 
     json설계
     ```json
     {
         "User email":str,
-        "Problem link":File,
+        "Problem Code":str,
         "Explanation":str
     } 
     ```

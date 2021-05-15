@@ -1,10 +1,14 @@
-import requests
+from fastapi import FastAPI, File, UploadFile
 
-headers = {
-    'accept': 'application/json',
-    'Content-Type': 'application/json',
-}
 
-data = '{ "User_email": "shinjae541969@gmail.com", "question": "string" }'
+app = FastAPI()
 
-response = requests.post('http://localhost:8000/ask', headers=headers, data=data)
+
+@app.post("/files/")
+async def create_file(file: bytes = File(...)):
+    return {"file_size": len(file)}
+
+
+@app.post("/uploadfile/")
+async def create_upload_file(file: UploadFile = File(...)):
+    return {"filename": file.filename}
