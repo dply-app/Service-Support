@@ -41,13 +41,23 @@ def bugreport(email,contents,explanation):
     now = datetime.datetime.now()
     time_s = str(now.strftime("%Y년 %m월 %d일 %H시 %M분 %S초"))
 
-    with open("./MDFILE/bugreport/"+email+"`s report.md",'w',encoding='UTF-8',newline="") as file:        
+    with open("./MDFILE/bugreport/"+email+"`s bugreport.md",'w',encoding='UTF-8',newline="") as file:        
         file.write("# "+email+"\n---\n\n")
         file.write("> 에러제보 시각\n   - "+time_s+"\n\n")
         file.write("> 에러 내용\n   - "+contents+"\n\n")
         file.write("> 에러 설명\n   - "+explanation)
         print("CLEAR")
 
-report(email="alfmalfm1214@gmail.com",contents="자세한내용은 생략한다",explanation="자세한내용은 생략한다")
-ask_md(email="alfmalfm1214@gmail.com",question="자세한내용은 생략한다")
-partnership_md(title="Team Sirius",link="https://www.teamsirius.xyz",tag="Mireu / 미르#0257",github="https://github.com/Mireu-Labcon",into="자세한내용은 생략한다")
+
+
+#버그 코드
+# bugreport(email="alfmalfm1214@gmail.com",contents="자세한내용은 생략한다",explanation="자세한내용은 생략한다")
+
+#신고 코드
+# report(email="alfmalfm1214@gmail.com",contents="자세한내용은 생략한다",explanation="자세한내용은 생략한다")
+
+#문의 코드
+# ask_md(email="alfmalfm1214@gmail.com",question="자세한내용은 생략한다")
+
+#파트너쉽 코드
+# partnership_md(title="Team Sirius",link="https://www.teamsirius.xyz",tag="Mireu / 미르#0257",github="https://github.com/Mireu-Labcon",into="자세한내용은 생략한다")
