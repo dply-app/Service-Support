@@ -1,0 +1,16 @@
+[Unit]
+Description=Backup API server
+After=syslog.target
+
+[Service]
+User=root
+Group=root
+
+PermissionsStartOnly=true
+ExecStart = python3 /home/Service-Support/APP/main.py
+WorkingDirectory=/
+
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
