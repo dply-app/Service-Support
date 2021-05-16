@@ -1,6 +1,7 @@
 from typing import Optional, List
 from fastapi import FastAPI, File, UploadFile
 from pydantic import BaseModel
+import json
 import os
 
 app = FastAPI()
@@ -32,7 +33,7 @@ class partnership_tools(BaseModel):
 # 메인 API 코드
 @app.get("/")
 def read_root():
-    return {"Test" : "True"}
+    return {"헤으응" : "True"}
 
 # =========================================테스트 API 코드 END=====================================
 
@@ -41,6 +42,9 @@ def read_root():
 #버그 제보
 @app.post("/bugreport")
 def bugreport(bugreport_tools:bugreport_tools):
+    with open("./bugreport/bugreport.json", "a") as f:
+        json.dump(bugreport_tools.User_email, f, indent='\t')
+        json.dump(bugreport_tools.Explanation, f, indent='\t')
     return {"email" : bugreport_tools.User_email, "Explanation" : bugreport_tools.Explanation}
 
 # =========================================버그제보 API 코드 END===================================
@@ -57,7 +61,7 @@ def ask(ask_tools:ask_tools):
 def report(report_tools:report_tools):
     return {"email" : report_tools.User_email, "Report_contents" : report_tools.Report_contents, "Explanation" : report_tools.Explanation}
 
-# =========================================파트너쉽 API 코드 START===================================
+# ======================================    ===파트너쉽 API 코드 START===================================
 
 #파트너쉽 안내 
 @app.post("/partnership")
