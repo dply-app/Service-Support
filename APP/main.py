@@ -7,7 +7,7 @@ app = FastAPI()
 
 class bugreport_tools(BaseModel):
     User_email : str
-    Problem Code : str
+    Problem_Code : str
     Explanation : str
 
 class ask_tools(BaseModel):
