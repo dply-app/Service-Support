@@ -1,6 +1,9 @@
+# -*- coding: utf-8 -*-
+import uvicorn
 from md_write import *
 from fastapi import FastAPI
 from pydantic import BaseModel
+from typing import Optional
 import os
 
 app = FastAPI()
@@ -71,4 +74,5 @@ def partnership(partnership_tools:partnership_tools):
 
 # =========================================파트너쉽 API 코드 END======================================
 
-# uvicorn main:app --reload --host 0.0.0.0 --port 8000
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=10000)
