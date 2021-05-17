@@ -1,3 +1,4 @@
 FastAPI >= 0.1.*
 BaseModel >= 0.1.*
 requests >= 0.1.*
+uvicorn[standard] >= 0.1.*
