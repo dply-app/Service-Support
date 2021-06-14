@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import uvicorn
 from md_write import *
+from email_write import *
 from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import Optional
@@ -44,6 +45,8 @@ def read_root():
 #버그 제보
 @app.post("/bugreport")
 def bugreport(bugreport_tools:bugreport_tools):
+    main.bugreport(email=bugreport_tools.User_email,contents=bugreport_tools.Problem_Code,explanation=bugreport_tools.Explanation)
+    emailwrite.emailwrite(title=bugreport_tools.User_email,into="에러 확인 요청",file=bugreport_tools.User_email+"`s bugreport.md")
     return {"email" : bugreport_tools.User_email, "Explanation" : bugreport_tools.Explanation}
 
 # =========================================버그제보 API 코드 END===================================
@@ -53,6 +56,8 @@ def bugreport(bugreport_tools:bugreport_tools):
 #질문 제보
 @app.post("/ask")
 def ask(ask_tools:ask_tools):
+    main.ask_md(email=ask_tools.User_email,question=ask_tools.question)
+    emailwrite.emailwrite(title=ask_tools.User_email,into="질문 신청 요청",file=ask_tools.User_email+"`s ask.md")
     return {"email" : ask_tools.User_email, "question":ask_tools.question}
 
 # =========================================질문 API 코드 END========================================
@@ -61,6 +66,8 @@ def ask(ask_tools:ask_tools):
 
 @app.post("/report")
 def report(report_tools:report_tools):
+    main.report(email=report_tools.User_email,contents=report_tools.Report_contents,explanation=report_tools.Explanation)
+    emailwrite.emailwrite(title=report_tools.User_email,into="신고 확인 요청",file=report_tools.User_email+"`s report.md")
     return {"email" : report_tools.User_email, "Report_contents" : report_tools.Report_contents, "Explanation" : report_tools.Explanation}
 
 # =========================================신고 API 코드 END========================================
@@ -70,6 +77,8 @@ def report(report_tools:report_tools):
 #파트너쉽 안내 
 @app.post("/partnership")
 def partnership(partnership_tools:partnership_tools):
+    main.partnership_md(title=partnership_tools.Server_name,link=partnership_tools.Server_link,tag=partnership_tools.Server_host_tag, github=partnership_tools.Server_github,into=partnership_tools.Server_introduction)
+    emailwrite.emailwrite(title=partnership_tools.Server_name,into="파트너쉽 신청 요청",file=partnership_tools.Server_name+".md")
     return {"Server_name" : partnership_tools.Server_name, "Server_link" : partnership_tools.Server_link, "Server_github" : partnership_tools.Server_github, "Server_introduction" : partnership_tools.Server_introduction, "Server_host_tag" : partnership_tools.Server_host_tag}
 
 # =========================================파트너쉽 API 코드 END======================================
