@@ -4,10 +4,11 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
 from email import encoders
 
+
 class emailwrite:
-    def emailwrite(title,into,file):
+    def emailwrite(title,into,data):
         sendEmail = "a33107521@gmail.com"
-        recvEmail = [user]
+        recvEmail = ["alfmalfm1214@gmail.com"]
         password = "brajhqejwbqqnion"
 
         smtpName = "smtp.gmail.com"
@@ -23,8 +24,9 @@ class emailwrite:
 
             # 본문 추가
             text = (
-                into
-                + "ssh://mireu.iptime.org:5100/home/Service-Support/APP/MDFILE/" , file
+                into,"\n"
+                + "ssh://mireu.iptime.org:5100/home/Service-Support/APP/MDFILE/"
+                + data
                 )
             contentPart = MIMEText(text)
             msg.attach(contentPart)
