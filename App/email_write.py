@@ -24,7 +24,7 @@ class emailwrite:
 
             # 본문 추가
             text = (
-                into,"\n"
+                into + "\n\n\n"
                 + "ssh://mireu.iptime.org:5100/home/Service-Support/APP/MDFILE/"
                 + data
                 )
