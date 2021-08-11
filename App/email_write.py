@@ -7,9 +7,9 @@ from email import encoders
 
 class emailwrite:
     def emailwrite(title,into,data):
-        sendEmail = "a33107521@gmail.com"
-        recvEmail = ["alfmalfm1214@gmail.com"]
-        password = "brajhqejwbqqnion"
+        sendEmail = "mailuser@mail.com"
+        recvEmail = ["mailuser@mail.com"]
+        password = "password"
 
         smtpName = "smtp.gmail.com"
         smtpPort = 587
